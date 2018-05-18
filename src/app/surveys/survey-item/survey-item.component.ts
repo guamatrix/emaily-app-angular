@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Survey } from '../store/surveys.reducers';
 
 @Component({
   selector: 'app-survey-item',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./survey-item.component.less']
 })
 export class SurveyItemComponent implements OnInit {
-
+  @Input() survey: Survey;
   constructor() { }
 
   ngOnInit() {

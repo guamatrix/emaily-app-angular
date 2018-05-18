@@ -1,3 +1,20 @@
-<p>
-  survey-item works!
-</p>
+<mat-card>
+  <mat-card-header fxLayout="row-reverse" fxLayoutAlign="start">
+    <mat-icon color="accent">mail</mat-icon>
+    <mat-card-title>Title: {{survey.title}}</mat-card-title>
+    <mat-card-subtitle>Subject: {{survey.subject}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{survey.body}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div fxLayout fxLayoutGap="15px">
+    <p>
+      <span [matBadge]="survey.yes" matBadgeOverlap="false">Yes</span>
+    </p>
+    <p>
+      <span matBadgeColor="warn" [matBadge]="survey.no" matBadgeOverlap="false">No</span>
+    </p>
+    </div>
+  </mat-card-actions>
+</mat-card>

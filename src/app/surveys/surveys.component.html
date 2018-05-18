@@ -1,8 +1,9 @@
 <div fxFlex fxLayout="column" fxLayoutAlign="center center" >
   <div fxFlex fxLayout fxLayoutAlign="center center" fxLayoutGap="10px">
     <h1>Surveys List</h1>
-    <button mat-mini-fab color="primary" routerLink="new">
+    <button mat-mini-fab color="primary" (click)="newSurvey()">
       <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-    </button>    
+    </button>
   </div>
+  <app-survey-list [surveyList]="surveys$ | async"></app-survey-list>
 </div>
