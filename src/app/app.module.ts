@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducers';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot(reducers)
   ],
   bootstrap: [AppComponent]
 })

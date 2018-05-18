@@ -6,14 +6,12 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreRoutingModule } from './core-routing.module';
 import { WelcomeComponent } from '../welcome/welcome.component';
-import { SurveysComponent } from '../surveys/surveys.component';
 import { LoaderComponent } from './loader/loader.component';
 
 const COMPONENTS = [
   HomeComponent,
   HeaderComponent,
   WelcomeComponent,
-  SurveysComponent
 ];
 
 const MODULES = [

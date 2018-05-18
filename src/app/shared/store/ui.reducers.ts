@@ -1,6 +1,21 @@
-import { Action } from '@ngrx/store';
-export const SET_LOADER = '[UI] set loader';
+import * as Actions from './ui.actions';
 
-export class SetLoader implements Action {
-  readonly type = SET_LOADER;
+export interface State {
+  loading: boolean;
 }
+
+const initialState: State = {
+  loading: false
+};
+
+export function uiReducer(state = initialState, action: Actions.UIActions) {
+  switch (action.type) {
+    case Actions.SET_LOADER:
+      return { ...state, loading: action.payload };
+
+    default:
+      return state;
+  }
+}
+
+export const isLoading = (state: State) => state.loading;

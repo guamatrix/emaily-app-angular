@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { WelcomeComponent } from '../welcome/welcome.component';
-import { SurveysComponent } from '../surveys/surveys.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: WelcomeComponent },
-  { path: 'surveys', component: SurveysComponent }
+  { path: 'surveys', loadChildren: '../surveys/surveys.module#SurveysModule' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule],
-  providers: []
 })
 export class CoreRoutingModule {}

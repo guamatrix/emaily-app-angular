@@ -2,6 +2,6 @@
     <app-header></app-header>
 </nav>
 <main>
-  <app-loader [loading]="true"></app-loader>
+  <app-loader [loading]="isLoading$ | async"></app-loader>
   <router-outlet></router-outlet>
 </main>
