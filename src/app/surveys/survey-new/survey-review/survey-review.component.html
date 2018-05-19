@@ -1,0 +1,14 @@
+<mat-card-title>Survey Review</mat-card-title>
+<mat-card-content fxLayout="column">
+  <mat-list>
+    <mat-list-item *ngFor="let field of fields; let i = index">
+      <h4 mat-line>{{field.placeholder}}</h4>
+      <p mat-line>{{survey[field.name]}}</p>
+      <mat-divider *ngIf="i !== fields.length - 1"></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card-content>
+<div fxLayout fxFlex fxLayoutAlign="space-between">
+  <button mat-raised-button type="button" color="warn" (click)="onCancel()">Cancel</button>
+  <button type="button" mat-raised-button color="primary">Send</button>
+</div>

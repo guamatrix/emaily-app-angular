@@ -10,7 +10,9 @@ import {
   MatProgressSpinnerModule,
   MatButtonModule,
   MatCardModule,
-  MatBadgeModule} from '@angular/material';
+  MatBadgeModule,
+  MatDividerModule,
+  MatListModule} from '@angular/material';
 
 const MODULES = [
   CommonModule,
@@ -24,7 +26,9 @@ const MODULES = [
   MatProgressSpinnerModule,
   MatButtonModule,
   MatCardModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatDividerModule,
+  MatListModule
 ];
 
 @NgModule({

@@ -1,39 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+
+import * as fromSurvey from '../store/surveys.reducers';
+import * as SurveysActions from '../store/surveys.actions';
+import { SurveysService } from '../surveys.service';
 
 @Component({
   selector: 'app-survey-new',
   templateUrl: './survey-new.component.html',
-  styleUrls: ['./survey-new.component.less']
+  styleUrls: ['./survey-new.component.less'],
+  providers: [SurveysService]
 })
-export class SurveyNewComponent implements OnInit {
-  surveyForm: FormGroup;
+export class SurveyNewComponent implements OnInit, OnDestroy {
+  showReview: boolean;
+  surveyForm: Observable<fromSurvey.SurveyForm>;
+  subscription: Subscription;
 
-  FIELDS = [
-    { name: 'title', placeholder: 'Survey Title' },
-    { name: 'subject', placeholder: 'Subject Line' },
-    { name: 'body', placeholder: 'Email Body' },
-    { name: 'recipient', placeholder: 'Recipent List' }
-  ];
-
-  constructor() { }
+  constructor(private store: Store<fromSurvey.State>,
+    private surveysService: SurveysService) { }
 
   ngOnInit() {
-    this.initForm();
-  }
+    this.store.dispatch(new SurveysActions.InitSurvey());
+    this.surveyForm = this.store.pipe(select(fromSurvey.getSurveyForm));
 
-  private initForm() {
-    this.surveyForm = new FormGroup({
-      'title': new FormControl(null, { validators: Validators.required }),
-      'subject': new FormControl(null, { validators: Validators.required }),
-      'body': new FormControl(null, { validators: Validators.required }),
-      'recipient': new FormControl(null, { validators: [Validators.required]})
+    this.subscription = this.surveysService.showReview.subscribe((flag: boolean) => {
+      this.showReview = flag;
     });
   }
 
-  onSubmit() {
-    if (!this.surveyForm.invalid) {
-      console.log(this.surveyForm.value);
-    }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

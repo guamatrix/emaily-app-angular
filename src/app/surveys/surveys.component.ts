@@ -23,7 +23,7 @@ export class SurveysComponent implements OnInit {
   }
 
   newSurvey() {
-    this.store.dispatch(new SurveysActions.InitSurvey());
+    // this.store.dispatch(new SurveysActions.InitSurvey());
     this.router.navigate(['new'], { relativeTo: this.routerActive });
   }
 }
