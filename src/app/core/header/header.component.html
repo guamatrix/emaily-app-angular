@@ -2,7 +2,14 @@
   <div fxFlex fxLayoutAlign="space-between">
       <a routerLink="/">Emaily App</a>
       <div>
-        <button routerLink="/surveys" mat-raised-button>Login With Google</button>
+        <!-- <button routerLink="/surveys" mat-raised-button>Login With Google</button> -->
+
+        <button *ngIf="!isLogin" (click)="login()" mat-raised-button>Login With Google</button>
+        <ng-template [ngIf]="isLogin">
+          <button (click)="handlePayment()" mat-raised-button color="accent">Add Credits</button>
+          <label class="label-credits">Credits: {{ user.credits }}</label>
+          <button (click)="logout()" mat-raised-button>{{ user.email }} (Logout)</button>
+        </ng-template> 
       </div>
   </div>
 </mat-toolbar>

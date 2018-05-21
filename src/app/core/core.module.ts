@@ -8,6 +8,9 @@ import { SharedModule } from '../shared/shared.module';
 import { CoreRoutingModule } from './core-routing.module';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { LoaderComponent } from './loader/loader.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthServices } from '../auth/auth.services';
+import { PayemntService } from '../payments/payment.service';
 
 const COMPONENTS = [
   HomeComponent,
@@ -19,13 +22,14 @@ const MODULES = [
   BrowserModule,
   BrowserAnimationsModule,
   SharedModule,
-  CoreRoutingModule
+  CoreRoutingModule,
+  HttpClientModule
 ];
 
 @NgModule({
   declarations: [COMPONENTS, LoaderComponent],
   imports: [MODULES],
   exports: [HomeComponent],
-  providers: [],
+  providers: [AuthServices, PayemntService],
 })
 export class CoreModule {}

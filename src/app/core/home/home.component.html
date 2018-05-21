@@ -1,5 +1,5 @@
 <nav>
-    <app-header></app-header>
+    <app-header [isLogin]="isLogin$ | async" [user]="user$ | async"></app-header>
 </nav>
 <main>
   <app-loader [loading]="isLoading$ | async"></app-loader>
